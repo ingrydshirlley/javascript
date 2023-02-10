@@ -3,10 +3,10 @@
  * Data: 09/02//2023
  * Autor: Ingryd
  * Versão: 1.0
-*********************************************************************************/
+ *********************************************************************************/
 
 //retorna o resultado de uma tabuada
-const calcularTabuada = function (multiplicando, maxMultiplicador) {
+const calcularTabuada = function(multiplicando, maxMultiplicador) {
     let tabuada = multiplicando;
     let maxContador = maxMultiplicador;
 
@@ -15,12 +15,12 @@ const calcularTabuada = function (multiplicando, maxMultiplicador) {
     let status = true;
 
     //Validação de entrada vazio e entrada 0
-    if(tabuada == 0 || maxContador == 0)
+    if (tabuada == 0 || maxContador == 0)
         status = false;
     //Validação de entrada de carcateres    
-    else if(isNaN(tabuada) || isNaN(maxContador))    
+    else if (isNaN(tabuada) || isNaN(maxContador))
         status = false;
-    else{
+    else {
         /* while(cont <= maxContador){
             resultado = tabuada * cont;
             //2x0=0
@@ -30,10 +30,10 @@ const calcularTabuada = function (multiplicando, maxMultiplicador) {
             cont +=1;
         }  */
 
-        for (let cont = 0; cont <= maxContador ; cont++) {
+        for (let cont = 0; cont <= maxContador; cont++) {
             resultado = tabuada * cont;
             console.log(`${tabuada} x ${cont} = ${resultado}`);
-        }      
+        }
     }
     return status;
 };
@@ -41,5 +41,5 @@ const calcularTabuada = function (multiplicando, maxMultiplicador) {
 //calcularTabuada(7,10);
 
 module.exports = {
-    calcularTabuada
+    tabuada
 }

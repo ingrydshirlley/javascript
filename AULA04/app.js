@@ -3,7 +3,7 @@
  * Data: 03/02//2023
  * Autor: Ingryd
  * Versão: 1.0
-******************************************************************/
+ ******************************************************************/
 
 var oi = require('./modulo/calculadora.js')
 
@@ -14,14 +14,14 @@ var entradaDados = readline.createInterface({
     output: process.stdout
 });
 
-entradaDados.question('Valor1: \n', function (numero1) {
+entradaDados.question('Valor1: \n', function(numero1) {
     // replace - permite trocar um conteúdo da string por outro
     let valor1 = numero1.replace(',', '.');
 
-    entradaDados.question('Valor2: \n', function (numero2) {
+    entradaDados.question('Valor2: \n', function(numero2) {
         let valor2 = numero2.replace(',', '.');
 
-        entradaDados.question('Escolha uma operação: [ SOMAR | SUBTRAIR | MULTIPLICAR | DIVIDIR ]: \n', function (tipoCalculo) {
+        entradaDados.question('Escolha uma operação: [ SOMAR | SUBTRAIR | MULTIPLICAR | DIVIDIR ]: \n', function(tipoCalculo) {
             let operacao = tipoCalculo.toUpperCase();
 
             let resultado;
@@ -47,15 +47,13 @@ entradaDados.question('Valor1: \n', function (numero1) {
                 // senão encerra o programa
                 if (resultado === false) {
                     entradaDados.close();
-                } else{
+                } else {
                     console.log(resultado);
                 }
 
             }
 
-
         })
     });
 
 });
-
