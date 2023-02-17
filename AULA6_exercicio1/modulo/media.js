@@ -57,11 +57,11 @@ const media = function(nomeAluno, sexoAluno, nomeProfessor, sexoProfessor, nomeC
         }
     }
 
-    function relatorio(nomeAluno, sexoAluno, nomeProfessor, sexoProfessor, NomeCurso, NomeDisciplina, numero1, numero2, numero3, numero4) {
+    /* function relatorio(nomeAluno, sexoAluno, nomeProfessor, sexoProfessor, NomeCurso, NomeDisciplina, numero1, numero2, numero3, numero4) {
         if (sexoAluno == 'feminino' && sexoProfessor == 'feminino') {
             console.log('A aluna ' + nomeAluno + 'foi ' + resultado + ' na disciplina. \n' + nomeDisciplina + 'Curso: \n' + nomeCurso + 'Professor: \n' + nomeProfessor + 'Notas da aluna:' + nota1 + nota2 + nota3 + nota4 + 'Média Final: ' + media)
         }
-    }
+    } */
 }
 
 module.exports = {
