@@ -1,46 +1,56 @@
-function parImpar(numeroInicio, numeroFinal, escolhaUsuario) {
+/*****************************************************************
+ * Objetivo: Diferenciar números pares e ímpares 
+ * Data: 22/02//2023
+ * Autor: Ingryd
+ * Versão: 1.0
+******************************************************************/
 
-    let numeroInicial = numeroInicio
-    let numeroFim = numeroFinal
+function parImpar(valorInicio, valorFinal, escolhaUsuario) {
     let escolha = escolhaUsuario
-    let quantidadePar = 0;
+    let valorFim = valorFinal
+    let valorInicial = valorInicio
     let quantidadeImpar = 0;
-    let quantidadeTotal = 0;
+    let quantidadePar = 0;
 
-    if (numeroInicial == '' || numeroFim == '' || escolha == '') {
-        console.log('ERRO: Alguma entrada está vazia');
-    } else if (isNaN(numeroInicial) || isNaN(numeroFim) || isNaN(escolha)) {
-        console.log('ERRO: Alguma entrada não é um número');
-    } else if (numeroInicial < 0 || numeroInicial > 500) {
-        console.log('ERRO: O número inicial deverá ser entre 0 e 500.');
-    } else if (numeroFim < 100 || numeroFim > 1000) {
-        console.log('ERRO: número final deverá ser entre 100 e 1000.');
-    } else if (numeroInicial > numeroFim) {
-        console.log('ERRO: O número inicial não pode ser maior que o número final.');
-    } else if (numeroInicial == numeroFim) {
-        console.log('ERRO: O número inicial não pode ser igual ao número final.');
+    if (valorInicial == '' || valorFim == '' || escolha == '') {
+        console.log('ERRO: ENTRADA VAZIA');
+
+    } else if (isNaN(valorInicial) || isNaN(valorFim) || isNaN(escolha)) {
+        console.log('ERRO: A ENTRADA SÓ ACEITA NÚMEROS');
+
+    } else if (valorInicial < 0 || valorInicial > 500) {
+        console.log('ERRO: O NÚMERO INICIAL DEVE SER ENTRE 0 e 500.');
+
+    } else if (valorFim < 100 || valorFim > 1000) {
+        console.log('ERRO: O NÚMERO FINAL DEVE SER ENTRE 100 e 1000.');
+
+    } else if (valorInicial >= valorFim) {
+        console.log('ERRO: O NÚMERO INICIAL NÃO PODE SER MAIOR OU IGUAL AO NÚMERO FINAL.');
+
     } else {
         if (Number(escolha) == 1) {
-            console.log('\nLista de números pares')
-            for (contador = Number(numeroInicial); contador <= Number(numeroFim); contador++) {
+            console.log('\nLista de números pares:')
+            for (contador = Number(valorInicial); contador <= Number(valorFim); contador++) {
                 if (contador % 2 == 0) {
                     console.log(contador);
                     quantidadePar++;
                 }
             }
             console.log('Quantidade de números pares: ' + quantidadePar);
+
         } else if (Number(escolha) == 2) {
-            console.log('\nLista de números impares')
-            for (contador = Number(numeroInicial); contador <= Number(numeroFim); contador++) {
+            console.log('\nLista de números impares:')
+            for (contador = Number(valorInicial); contador <= Number(valorFim); contador++) {
                 if (contador % 2 == 1) {
                     console.log(contador);
                     quantidadeImpar++;
                 }
             }
             console.log('Quantidade de números impares: ' + quantidadeImpar);
+
         } else if (Number(escolha) == 3) {
             console.log('\nLista de números pares e impares')
-            for (contador = Number(numeroInicial); contador <= Number(numeroFim); contador++) {
+            for (contador = Number(valorInicial); contador <= Number(valorFim); contador++) {
                 if (contador % 2 == 0) {
                     console.log('Par: ' + contador);
                     quantidadePar++;

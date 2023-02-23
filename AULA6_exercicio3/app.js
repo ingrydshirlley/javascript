@@ -1,5 +1,11 @@
-var parImpar = require('./modulo/parImpar.js');
+/*****************************************************************
+ * Objetivo: Diferenciar números pares e ímpares 
+ * Data: 22/02//2023
+ * Autor: Ingryd
+ * Versão: 1.0
+******************************************************************/
 
+var parImpar = require('./modulo/parImpar.js');
 var readline = require('readline');
 
 var entradaDados = readline.createInterface({
@@ -7,19 +13,17 @@ var entradaDados = readline.createInterface({
     output: process.stdout
 })
 
-entradaDados.question('Digite o número inicial: ', function(numeroInicial) {
-    let numeroInicio = numeroInicial;
+entradaDados.question('Digite o número inicial: ', function(valorInicial) {
+    let valorInicio = valorInicial;
 
-    entradaDados.question('Digite o número final: ', function(numeroFim) {
-        let numeroFinal = numeroFim;
+    entradaDados.question('Digite o número final: ', function(valorFim) {
+        let valorFinal = valorFim;
 
-        console.log('1 - PAR');
-        console.log('2 - IMPAR');
-        console.log('3 - PAR E IMPAR');
+        console.log('\n1- Par, 2- Impar, 3- Par e Impar');
         entradaDados.question('Digite a sua escolha: ', function(escolha) {
             let escolhaUsuario = escolha;
 
-            let resultado = parImpar.parImpar(numeroInicio, numeroFinal, escolhaUsuario)
+            let resultado = parImpar.parImpar(valorInicio, valorFinal, escolhaUsuario)
         })
     })
 })
