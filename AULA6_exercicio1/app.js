@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 var calculoMedia = require('./modulo/media.js')
     //import da biblioteca readline
 var readline = require('readline');
@@ -5,6 +6,17 @@ const { exame } = require('./modulo/media.js');
 
 
 //Cria o objeto para ser especialista em entrada de dados pelo teclado
+=======
+/*****************************************************************
+ * Objetivo: Usar calcálos matemáticos (soma, subtração, divisão, multiplicação).
+ * Data: 03/02//2023
+ * Autor: Ingryd
+ * Versão: 1.0
+ ******************************************************************/
+
+/* var oi = require('./modulo/media.js') */
+var readline = require('readline');
+>>>>>>> ae946cc2ef94ef536db0b3aa12201552b3535e13
 var entradaDados = readline.createInterface({
     input: process.stdin,
     output: process.stdout
@@ -14,6 +26,7 @@ var entradaDados = readline.createInterface({
 entradaDados.question('Digite o nome do aluno: ', function(nome) {
     let nomeAluno = nome;
 
+<<<<<<< HEAD
     entradaDados.question('Qual o sexo do aluno (M ou F)? ', function(sexoAluno) {
         let sexoAl = sexoAluno.toUpperCase()
 
@@ -36,6 +49,54 @@ entradaDados.question('Digite o nome do aluno: ', function(nome) {
                             entradaDados.question('Digite a nota 2: ', function(nota2) {
                                 let valor2 = nota2;
 
+=======
+entradaDados.question('Nome do aluno: ', function (nomeAluno) {
+
+    entradaDados.question('Sexo do aluno [FEMININO | MASCULINO]: ', function (sexoAluno) {
+        let sexoDoAluno = sexoAluno.toUpperCase();
+        if (sexoDoAluno.toUpperCase() == 'FEMININO') {
+            console.log('oi');
+        } else if (sexoDoAluno.toUpperCase() == 'MASCULINO') {
+            console.log('tchau');
+        } else if (sexoDoAluno == '') {
+            console.log('Por favor, informe o sexo');
+        } else if (sexoDoAluno != 'FEMININO' || sexoDoProfessor != 'MASCULINO') {
+            console.log('NAOOOOOOO');
+        }
+        entradaDados.question('Nome do professor: ', function (nomeProfessor) {
+
+            entradaDados.question('Sexo do professor [FEMININO | MASCULINO]: ', function (sexoProfessor) {
+                let sexoDoProfessor = sexoProfessor.toUpperCase();
+                if (sexoDoProfessor.toUpperCase() == 'FEMININO') {
+                    console.log('oi');
+                } else if (sexoDoProfessor.toUpperCase() == 'MASCULINO') {
+                    console.log('tchau');
+                } else if (sexoDoProfessor == '') {
+                    console.log('Por favor, informe o sexo');
+                } else if (sexoDoProfessor != 'FEMININO' || sexoDoProfessor != 'MASCULINO') {
+                    console.log('NAOOOOOOO');
+                }
+
+                entradaDados.question('Nome do curso: ', function (NomeCurso) {
+
+                    entradaDados.question('Nome da disciplina: ', function (NomeDisciplina) {
+
+                        entradaDados.question('Digite a nota 1: ', function (numero1) {
+                            let nota = Number(numero1);
+                            if (nota == '') {
+                                console.log('digite um numero seu tonto');
+                            } else if (nota == isNaN) {
+                                console.log('so aceitamos numeros');
+                            }
+
+                            entradaDados.question('Digite a nota 2: ', function (numero2) {
+
+                                entradaDados.question('Digite a nota 3: ', function (numero3) {
+
+                                    entradaDados.question('Digite a nota 4: ', function (numero4) {
+
+                                    });
+>>>>>>> ae946cc2ef94ef536db0b3aa12201552b3535e13
 
                                 entradaDados.question('Digite a nota 3: ', function(nota3) {
                                     let valor3 = nota3;
