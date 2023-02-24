@@ -84,7 +84,7 @@ const filtrandoElementos = function() {
 
 const removerElemento = function(array, nomeItem) {
     //cria uma copia do array
-    let novaLista = listaProdutos.slice()
+    let novaLista = array.slice()
 
     let nome = nomeItem
     let status
@@ -104,6 +104,9 @@ const removerElemento = function(array, nomeItem) {
         return status
     }
 }
+
+console.log(removerElemento(listaNomes, 'maria'))
+console.log(listaNomes)
 
 console.log(removerElemento(listaProdutos, 'monitor'))
 console.log(listaProdutos)
