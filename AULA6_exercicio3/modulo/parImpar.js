@@ -3,7 +3,7 @@
  * Data: 22/02//2023
  * Autor: Ingryd
  * Versão: 1.0
-******************************************************************/
+ ******************************************************************/
 
 function parImpar(valorInicio, valorFinal, escolhaUsuario) {
     let escolha = escolhaUsuario
@@ -59,12 +59,11 @@ function parImpar(valorInicio, valorFinal, escolhaUsuario) {
                     quantidadeImpar++;
                 }
             }
-            console.log('Quantidade total de números pares: ' + quantidadePar);
-            console.log('Quantidade total de números impares: ' + quantidadeImpar);
+            console.log('Total de pares: ' + quantidadePar);
+            console.log('Total de impares: ' + quantidadeImpar);
         }
     }
 }
-
 module.exports = {
     parImpar
 }
