@@ -91,7 +91,7 @@ const removerElemento = function(array, nomeItem) {
     let indice = novaLista.indexOf(nome)
 
     if (indice >= 0) {
-        listaProdutos.splice(indice, 1) //splice permite remover um elemento pelo indice
+        novaLista.splice(indice, 1) //splice permite remover um elemento pelo indice
         status = true
 
     } else {
@@ -105,8 +105,9 @@ const removerElemento = function(array, nomeItem) {
     }
 }
 
-console.log(removerElemento(listaNomes, 'maria'))
+//mostrando o resultado:
+/* console.log(removerElemento(listaNomes, 'maria'))
 console.log(listaNomes)
 
 console.log(removerElemento(listaProdutos, 'monitor'))
-console.log(listaProdutos)
+console.log(listaProdutos) */
