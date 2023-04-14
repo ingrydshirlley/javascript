@@ -22519,7 +22519,7 @@ function getEstadosRegiao(regiaoEstado) {
 
     for (let i = 0; i < estadosCidades.estados.length; i++) {
         let estado = estadosCidades.estados[i];
-        if (regiaoEstado == estado.regiao) {
+        if (regiaoEstado.toUpperCase() == estado.regiao.toUpperCase()) {
             jasonRegiao = { uf: estado.sigla, descricao: estado.nome };
             arrayRegiao.push(jasonRegiao);
         }
@@ -22537,7 +22537,7 @@ function getCapitalPais() {
     for (let i = 0; i < estadosCidades.estados.length; i++) {
         let estado = estadosCidades.estados[i];
 
-        if (estado.capital_pais != undefined) {
+        if (estado.capital_pais.toUpperCase() != undefined) {
             let dados = {
                 capital_atual: estado.capital_pais.capital,
                 uf: estado.sigla,

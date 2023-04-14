@@ -28,11 +28,8 @@ const estadosCidades = require('./modulo/estados_cidades.js')
 
 
 
-
-
 //cria um objeto com as informações da classe express
 const app = express();
-
 //define as permissões no header da API
 app.use((request, response, next) => {
     //Permite gerenciar a origem das requisições da API
@@ -50,11 +47,9 @@ app.use((request, response, next) => {
 
 
 //endPoints, cors, async(requisição asíncrona)
-
 /* *********FUNÇÃO 1********* */
 //endPoint para Listar os Estados
-app.get('/estados', cors(), async function(request, response, next) {
-
+app.get('/v1/senai/estados', cors(), async function(request, response, next) {
     //chama a funcao que retorna os estados
     let listaDeEstados = estadosCidades.getListaDeEstados();
     //tratamento p validar se a funçao validou o processamento
@@ -69,7 +64,7 @@ app.get('/estados', cors(), async function(request, response, next) {
 
 /* *********FUNÇÃO 2********* */
 //endPoint para Listar as caracteristicas do estado pela sigla
-app.get('/estado/sigla/:uf', cors(), async function(request, response, next) {
+app.get('/v1/senai/estado/sigla/:uf', cors(), async function(request, response, next) {
     //:uf é uma variavel q sera utilizada p passagem de valores na url da requisiçao
 
     let siglaEstado = request.params.uf;
@@ -95,7 +90,7 @@ app.get('/estado/sigla/:uf', cors(), async function(request, response, next) {
 
 /* *********FUNÇÃO 3********* */
 //endPoint para pegar a capital do estado pela sigla
-app.get('/capitalEstado/sigla/:uf', cors(), async function(request, response, next) {
+app.get('/v1/senai/capitalEstado/sigla/:uf', cors(), async function(request, response, next) {
     let siglaEstado = request.params.uf;
     let statusCode;
     let dadosCapitalEstado = {};
@@ -120,29 +115,63 @@ app.get('/capitalEstado/sigla/:uf', cors(), async function(request, response, ne
 });
 
 /* *********FUNÇÃO 4********* */
-//endPoint para pegar a capital do estado pela sigla
-app.get('/estadosRegiao/regiaoEstado/:jRegiao', cors(), async function(request, response, next) {
-    let nomeRegiao = request.params.jRegiao;
+//endPoint para pegar os estados do Brasil conforme a sua região
+app.get('/v1/senai/estadosRegiao/sigla/:regiao', cors(), async function(request, response, next) {
+    let nomeRegiao = request.params.regiao;
     let statusCode;
     let dadosEstadoRegiao = {};
 
     if (nomeRegiao == '' || nomeRegiao == undefined || !isNaN(nomeRegiao)) {
-        dadosEstadoRegiao.message = "Não é possível processar a requisição, pois a sigla do estado não foi informada ou não atende a quantidade de caracteres (2 digitos)";
+        dadosEstadoRegiao.message = "Não é possível processar a requisição, pois a sigla do estado não foi informada";
         statusCode = 400;
     } else {
         //chama a função que filtra o estado pela sigla 
-        let jRegiao = estadosCidades.getEstadosRegiao(nomeRegiao)
+        let regiao = estadosCidades.getEstadosRegiao(nomeRegiao)
+        console.log(regiao.estados)
 
         //valida se houve retorno válido da função
-        if (jRegiao) {
+        if (regiao) {
             statusCode = 200; //Estado encontrado
-            dadosEstadoRegiao = jRegiao;
+            dadosEstadoRegiao = regiao;
         } else {
             statusCode = 404; //Estado não encontrado
         }
     }
     response.status(statusCode);
     response.json(dadosEstadoRegiao)
+});
+
+/* *********FUNÇÃO 5********* */
+//endPoint para retornar as infos referente aos estados que formam a capital do Brasil.
+
+
+/* *********FUNÇÃO 6********* */
+//endPoint para retornar as cidades de acordo com a sigla do estado
+app.get('/v1/senai/cidades', cors(), async function(request, response, next) {
+    //recebe o valor da variavel q sera enviada por querystring
+    //ex: www.uol.com.br?uf=sp ---- oq esta antes do ? é o endereço do site. oq estiver dps sao variaveis q tao sendo encaminhadas
+    //usamos a query para receber diversas variaveis para realizar filtros. usamos o params para receber o id
+    let siglaEstado = request.query.uf;
+    console.log(siglaEstado)
+
+    if (siglaEstado == '' || siglaEstado == undefined || !isNaN(siglaEstado)) {
+        dadosCidade.message = "Não é possível processar a requisição, pois a sigla do estado não foi informada";
+        statusCode = 400;
+    } else {
+        //chama a função que filtra o estado pela sigla 
+        let cidades = estadosCidades.getCidades(siglaEstado)
+        console.log(cidades.estados)
+
+        //valida se houve retorno válido da função
+        if (cidades) {
+            statusCode = 200; //Estado encontrado
+            dadosCidade = cidades;
+        } else {
+            statusCode = 404; //Estado não encontrado
+        }
+    }
+    response.status(statusCode);
+    response.json(dadosCidade)
 });
 
 
