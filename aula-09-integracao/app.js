@@ -31,7 +31,20 @@ app.use((request, response, next) => {
 });
 
 //endpoint: retorna todos os dados de alunos
-app.get('/v1/lion-school/aluno', cors(), async function(request, response) {})
+app.get('/v1/lion-school/aluno', cors(), async function(request, response) {
+    //import da controller do aluno
+    let controllerAluno = require('./controller/controller_aluno.js');
+
+    let dados = await controllerAluno.selecinarTodosAlunos();
+
+    if (dados){
+        response.json(dados)
+        response.status(200)
+    } else {
+        response.json()
+        response.status(404)
+    }
+})
 
 //endpoint: retorna dados do aluno pelo id
 app.get('/v1/lion-school/aluno/:id', cors(), async function(request, response) {})
@@ -44,3 +57,10 @@ app.put('/v1/lion-school/aluno/:id', cors(), async function(request, response) {
 
 //endpoint: exclui um aluno
 app.delete('/v1/lion-school/aluno/:id', cors(), async function(request, response) {})
+
+
+
+
+app.listen(8080, function() {
+    console.log('listening on')
+})
