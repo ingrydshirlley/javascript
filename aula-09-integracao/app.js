@@ -13,6 +13,7 @@ para realizar a conexao com o banco, iremos uilizar o prisma
     npm install @prisma/client
  *************************************************************************/
 
+
 /* Import das dependencias para criar a API */
 //responsavel pelas requisições
 const express = require('express');
@@ -30,13 +31,14 @@ app.use((request, response, next) => {
     next();
 });
 
+var bodyJSON = bodyParser.json();
+//import da controller do aluno
+var controllerAluno = require('./controller/controller_aluno.js');
+
 //endpoint: retorna todos os dados de alunos
 app.get('/v1/lion-school/aluno', cors(), async function(request, response) {
-    //import da controller do aluno
-    let controllerAluno = require('./controller/controller_aluno.js');
 
     let dados = await controllerAluno.selecinarTodosAlunos();
-
     if (dados){
         response.json(dados)
         response.status(200)
@@ -49,11 +51,20 @@ app.get('/v1/lion-school/aluno', cors(), async function(request, response) {
 //endpoint: retorna dados do aluno pelo id
 app.get('/v1/lion-school/aluno/:id', cors(), async function(request, response) {})
 
+
 //endpoint: insere um novo aluno
-app.post('/v1/lion-school/aluno', cors(), async function(request, response) {})
+app.post('/v1/lion-school/aluno', cors(), bodyJSON, async function(request, response) {
+    let dadosBody = request.body;
+    
+    let resultInsertDados = await controllerAluno.inserirAluno(dadosBody);
+    response.status(resultInsertDados.status)
+    response.json(resultInsertDados)
+})
+
 
 //endpoint: atualiza um aluno
 app.put('/v1/lion-school/aluno/:id', cors(), async function(request, response) {})
+
 
 //endpoint: exclui um aluno
 app.delete('/v1/lion-school/aluno/:id', cors(), async function(request, response) {})
