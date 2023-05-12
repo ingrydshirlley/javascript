@@ -83,11 +83,37 @@ const selectAllAluno = async function () {
 }
 
 //retorna todos os registros do BD
-const selectByIdAluno = function (id) { }
+const selectByIdAluno = async function (id) {
+    //variavel com o scriptSQL para executa no BD
+    let sql = `select * from tbl_aluno where id = ${id}`
+
+    let rsAluno = await prisma.$queryRawUnsafe(sql)
+
+    if (rsAluno.length > 0) {
+        return rsAluno
+    } else {
+        return false
+    }
+}
+
+const selectLastId = async function (id) {
+    //script para retornar apenas o ultimo registro inserido na tabela
+    let sql = `select id from tbl_aluno order by id desc limit 1`
+
+    let rsAluno = await prisma.$queryRawUnsafe(sql)
+
+    if (rsAluno.length > 0) {
+        return rsAluno[0].id
+    } else {
+        return false
+    }
+}
 
 module.exports = {
     selectAllAluno,
     insertAluno,
     updateAluno,
-    deleteAluno
+    deleteAluno,
+    selectByIdAluno,
+    selectLastId
 }
